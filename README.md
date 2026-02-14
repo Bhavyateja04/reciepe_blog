@@ -1,36 +1,269 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍽️ Multi-Language Recipe Blog
 
-## Getting Started
+A modern, high-performance recipe blog built with **Next.js (App Router)**, featuring internationalization, static generation, SEO optimization, and full Docker containerization.
 
-First, run the development server:
+---
+
+## 🚀 Project Overview
+
+This project demonstrates how to build a modern content-driven website using:
+
+* ⚡ **Next.js 16 (App Router)**
+* 🌍 Multi-language routing (English, Spanish, French)
+* 🧱 Static Site Generation (SSG)
+* 🔎 SEO best practices (Sitemap + Metadata)
+* 🐳 Full Docker containerization
+* 🎨 Tailwind CSS for modern UI
+
+The application is fully containerized and can be started using a single command.
+
+---
+
+## 🌍 Supported Languages
+
+* 🇺🇸 English (`/en`)
+* 🇪🇸 Spanish (`/es`)
+* 🇫🇷 French (`/fr`)
+
+Users can switch languages using the built-in language switcher component.
+
+---
+
+## 🏗️ Architecture
+
+### Rendering Strategy
+
+* **Static Site Generation (SSG)** for:
+
+  * Homepage
+  * Recipes list
+  * Individual recipe pages (via `generateStaticParams`)
+
+This ensures:
+
+* Fast performance
+* SEO-friendly output
+* Pre-rendered content
+
+---
+
+## 📂 Project Structure
+
+```
+app/
+ ├── layout.tsx
+ ├── sitemap.ts
+ ├── api/
+ │    └── health/route.ts
+ └── [locale]/
+      ├── layout.tsx
+      ├── page.tsx
+      └── recipes/
+            ├── page.tsx
+            └── [slug]/page.tsx
+
+components/
+ ├── LanguageSwitcher.tsx
+ └── NewsletterForm.tsx
+
+Dockerfile
+docker-compose.yml
+.env.example
+```
+
+---
+
+## ✨ Features
+
+### 🏠 Homepage
+
+* Statically generated
+* Displays featured recipes
+* `data-testid="featured-recipes"`
+* `data-testid="recipe-card"`
+
+---
+
+### 📖 Recipe Detail Pages
+
+* Dynamic route: `/[locale]/recipes/[slug]`
+* Statically generated via `generateStaticParams`
+* Displays:
+
+  * Title (`recipe-title`)
+  * Ingredients (`recipe-ingredients`)
+  * Instructions (`recipe-instructions`)
+  * Optimized image via `next/image`
+
+---
+
+### 🔍 Search & Filter
+
+* Client-side search functionality
+* Category filter dropdown
+* Real-time filtering
+
+---
+
+### 📧 Newsletter Subscription
+
+* Client-side validation
+* Error handling
+* Success state
+* No backend required
+
+Test IDs included:
+
+* `newsletter-form`
+* `newsletter-email`
+* `newsletter-submit`
+* `newsletter-error`
+* `newsletter-success`
+
+---
+
+### 🐦 Social Sharing
+
+* Twitter Web Intent integration
+* `data-testid="social-share-twitter"`
+* URL encoding applied correctly
+
+---
+
+### 🗺️ Sitemap
+
+* Available at:
+
+  ```
+  /sitemap.xml
+  ```
+* Includes:
+
+  * Homepage (all locales)
+  * Recipes page (all locales)
+  * All recipe detail pages (all locales)
+* Proper XML structure
+
+---
+
+### 🖨️ Print-Friendly Layout
+
+* Uses `@media print`
+* Hides non-essential UI:
+
+  * Language switcher
+  * Social share buttons
+  * Newsletter form
+
+---
+
+### 🖼️ Image Optimization
+
+* Uses Next.js `<Image />`
+* Automatic `srcset`
+* Optimized loading
+* Remote image domains configured
+
+---
+
+# 🐳 Docker Setup (Submission Requirement)
+
+## Build and Run
+
+```bash
+docker-compose up --build -d
+```
+
+Application will be available at:
+
+```
+http://localhost:3000/en
+```
+
+---
+
+## Health Check
+
+Health endpoint:
+
+```
+http://localhost:3000/api/health
+```
+
+Returns:
+
+```json
+{"status":"ok"}
+```
+
+Docker healthcheck is configured in `docker-compose.yml`.
+
+---
+
+# 🔐 Environment Variables
+
+`.env.example` contains:
+
+```
+CMS_PROVIDER='contentful'
+CONTENTFUL_SPACE_ID='your_space_id'
+CONTENTFUL_ACCESS_TOKEN='your_access_token'
+CONTENTFUL_PREVIEW_ACCESS_TOKEN='your_preview_token'
+CONTENTFUL_PREVIEW_SECRET='your_preview_secret'
+```
+
+No real secrets are committed.
+
+---
+
+# 🛠️ Local Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000/en
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# 📊 SEO & Performance
 
-To learn more about Next.js, take a look at the following resources:
+* Static generation for fast load times
+* XML sitemap generation
+* Optimized images
+* Clean semantic HTML
+* Locale-based routing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# 🧪 Testing Contract Compliance
 
-## Deploy on Vercel
+All required `data-testid` attributes are implemented for automated verification.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project satisfies all functional requirements specified in the assignment brief.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+# 🏁 Final Status
+
+✔ Fully containerized
+✔ Multi-language support
+✔ Static generation
+✔ Dynamic routes
+✔ SEO optimized
+✔ Client-side search
+✔ Newsletter validation
+✔ Social sharing
+✔ Sitemap generation
