@@ -9,7 +9,7 @@ A modern, high-performance recipe blog built with **Next.js (App Router)**, feat
 This project demonstrates how to build a modern content-driven website using:
 
 * ⚡ **Next.js 16 (App Router)**
-* 🌍 Multi-language routing (English, Spanish, French)
+* 🌍 Multi-language routing (English, Spanish, French) can be accessed in any language
 * 🧱 Static Site Generation (SSG)
 * 🔎 SEO best practices (Sitemap + Metadata)
 * 🐳 Full Docker containerization
