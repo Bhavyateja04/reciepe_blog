@@ -19,7 +19,7 @@ The application is fully containerized and can be started using a single command
 
 ---
 
-## 🌍 Supported Languages
+## 🌍 Supported Languages customized according to the requirements
 
 * 🇺🇸 English (`/en`)
 * 🇪🇸 Spanish (`/es`)
